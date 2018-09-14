@@ -41,9 +41,39 @@
 
 
 <script>
-    Plotly.d3.tsv("choleraDeaths.tsv", function(err, rows) {
-        console.log(rows);
+    Plotly.d3.tsv("choleraDeaths.tsv", function(allRows) {
+        console.log(allRows);
+
+        var layout = {
+            title: "Chart 0"
+        };
+
+        var x = [], y = [];
+
+        for (var i=0; i<allRows.length; i++) {
+        		row = allRows[i];
+        		x.push( row['AAPL_x'] );
+        		y.push( row['AAPL_y'] );
+        }
+
+        var trace0 = {
+            x: x,
+            y: y,
+            type: 'scatter',
+            mode: 'markers',
+            name: 'Zeroth Trace',
+            text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
+
+            marker: {
+                color: 'rgb(219, 64, 82)',
+                size: 12
+            }
+        };
+
+        Plotly.plot(myGraph, trace0, layout);
     });
+
+
     var trace0 = {
         x: [1, 2, 3, 4],
         y: [10, 15, 13, 17],
