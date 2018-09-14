@@ -40,11 +40,11 @@
 
 
 <script>
-    Plotly.d3.tsv("choleraDeaths.tsv", function(allRows) {
+    Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/choleraDeaths.tsv", function(allRows) {
         console.log(allRows);
 
         var layout = {
-            title: "Chart 0"
+            title: "Date vs. Number of attacks and deaths"
         };
 
         var x = [], y = [];
@@ -53,9 +53,11 @@
         		row = allRows[i];
         		x.push( row['Date'] );
         		y.push( row['Attack'] );
+            console.log(row['Date']);
+            console.log(row['Attack']);
         }
 
-        var trace0 = {
+        var trace0 = [{
             x: x,
             y: y,
             type: 'line',
@@ -67,7 +69,7 @@
                 color: 'rgb(219, 64, 82)',
                 size: 12
             }
-        };
+        }];
 
         Plotly.newPlot('myGraph', trace0, layout);
     });
@@ -79,7 +81,7 @@
         type: 'scatter',
         mode: 'markers',
         name: 'Zeroth Trace',
-        text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
+        //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
 
         marker: {
             color: 'rgb(219, 64, 82)',
