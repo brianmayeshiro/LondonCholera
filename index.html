@@ -69,7 +69,7 @@
             }
         };
 
-        Plotly.plot(myGraph, trace0, layout);
+        Plotly.newPlotplot('myGraph', trace0, layout);
     });
 
 
@@ -110,7 +110,7 @@
        title: "Chart 2"
    }
 	var myChart1=Plotly.plot( plot1Div, data1, layout );
-    var myChart2=Plotly.plot( plot2Div, data2, layout2 );
+    //var myChart2=Plotly.plot( plot2Div, data2, layout2 );
 
     var button = document.getElementById("myButton");
     var button2 = document.getElementById("myButton2");
