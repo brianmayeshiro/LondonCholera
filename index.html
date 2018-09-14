@@ -35,12 +35,15 @@
       </div>
       <div style="width:50%; height:400px; float: left">
       <div id="plot2" style="width:100%;height:300px;" ></div>
+      <div id="myGraph" style="width:100%;height:300px;" ></div>
       </div>
     </div>
- 
+
 
 <script>
- 
+    Plotly.d3.tsv("choleraDeaths.tsv", function(err, rows) {
+        console.log(rows);
+    });
     var trace0 = {
         x: [1, 2, 3, 4],
         y: [10, 15, 13, 17],
@@ -61,11 +64,11 @@
         name: 'First Trace'
     };
     data1 = [trace0, trace1];
-    
+
     var trace2 = {
         x: ["Star Wars", "Star Trek", "Babylon 5", "Battlestar"],
         y: [16, 5, 11, 9],
-        type: 'bar'     
+        type: 'bar'
     }
     data2 = [trace2];
 
@@ -152,7 +155,7 @@
         for (i in arrx){
             arry[i] = Math.random()*15;
         }
-        
+
         // Add the data to the plot.
         Plotly.plot( plot1Div, data);
     }
