@@ -29,10 +29,8 @@ li a:hover {
 <body>
 
 <ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about">About</a></li>
+  <li><a class="active" href="index.html">Home</a></li>
+  <li><a href="about.html">About</a></li>
 </ul>
 <script src="plotly-latest.min.js"></script>
 
@@ -143,12 +141,26 @@ Plotly.plot('table', data, layout);
             title: "Date vs. Number of attacks and deaths"
         };
 
-        var x = [], y = [];
+        var x = [], y = [], deaths = [], totalAttacks = [], totalDeaths = [];
 
         for (var i=0; i<allRows.length; i++) {
         		row = allRows[i];
         		x.push( row['Date'] );
         		y.push( row['Attack'] );
+            deaths.push(row['Death']);
+            if (totalAttacks.length != 0) {
+              totalAttacks.push(+row['Attack'] + +totalAttacks[i - 1]);
+            }
+            else {
+              totalAttacks.push(row['Attack']);
+            }
+
+            if (totalDeaths.length != 0) {
+              totalDeaths.push(+row['Death'] + +totalDeaths[i - 1]);
+            } else {
+              totalDeaths.push(row['Death']);
+            }
+
             //console.log(row['Date']);
             //console.log(row['Attack']);
         }
@@ -157,8 +169,17 @@ Plotly.plot('table', data, layout);
             x: x,
             y: y,
             type: 'line',
-            mode: 'markers',
             name: 'Attacks',
+            //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
+        }];
+
+        Plotly.newPlot('choleraDeaths', trace0, layout);
+
+        var trace1 = [{
+            x: x,
+            y: deaths,
+            type: 'line',
+            name: 'Deaths',
             //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
 
             marker: {
@@ -167,15 +188,27 @@ Plotly.plot('table', data, layout);
             }
         }];
 
-        Plotly.newPlot('choleraDeaths', trace0, layout);
+        Plotly.plot(choleraDeaths, trace1);
 
-        var trace1 = [{
-
+        var trace2 = [{
+          x: x,
+          y: totalAttacks,
+          type: 'line',
+          name: 'total attacks up to this day'
 
         }];
 
-        Plotly.plot(choleraDeaths, trace1);
+        Plotly.plot(choleraDeaths, trace2);
 
+        var trace3 = [{
+          x: x,
+          y: totalDeaths,
+          type: 'line',
+          name: 'total deaths up to this day'
+
+        }];
+
+        Plotly.plot(choleraDeaths, trace3);
     });
 
     Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/naplesCholeraAgeSexData.tsv", function(allRows) {
