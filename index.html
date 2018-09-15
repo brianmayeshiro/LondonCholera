@@ -96,6 +96,16 @@ li a:hover {
       <div id="UKcensus1851Female" style="width:100%;height:300px;" >
       </div>
     </div>
+    <div id="thevizcolumn" style="width:80%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+      <div style="width:50%; height:400px; float: left">
+      <div id="UKcensus1851Bar" style="width:100%;height:300px;" >
+      </div>
+    </div>
+    <div id="thevizcolumn" style="width:80%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+      <div style="width:100%; height:400px; float: left">
+      <div id="UKcensus1851Bar2" style="width:100%;height:300px;" >
+      </div>
+    </div>
 <script>
 Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/choleraDeaths.tsv", function(err, rows){
 
@@ -398,6 +408,10 @@ Plotly.plot('table', data, layout);
             title: "UK Census 1851 Female"
         };
 
+        var layout3 = {
+            title: "Overall Men vs. Women"
+        };
+
         var trace0 = [{
             values: male,
             labels: age,
@@ -424,8 +438,35 @@ Plotly.plot('table', data, layout);
             }
         }];
 
+        var trace2 = [{
+            x: age,
+            y: male,
+            type: 'bar',
+            mode: 'markers',
+            name: 'Zeroth Trace',
+
+            marker: {
+                color: 'rgb(219, 64, 82)',
+                size: 12
+            }
+        }];
+
+        var trace3 = [{
+            x: age,
+            y: female,
+            type: 'bar',
+            mode: 'markers',
+            name: 'Zeroth Trace',
+
+            marker: {
+                color: 'rgb(219, 64, 82)',
+                size: 12
+            }
+        }];
         Plotly.newPlot('UKcensus1851', trace0, layout);
-        Plotly.newPlot('UKcensus1851Female', trace1, layout2)
+        Plotly.newPlot('UKcensus1851Female', trace1, layout2);
+        Plotly.newPlot('UKcensus1851Bar', trace2, layout);
+        Plotly.newPlot('UKcensus1851Bar2', trace3, layout2);
     });
 /*
     var trace0 = {
