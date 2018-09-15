@@ -83,6 +83,11 @@ li a:hover {
     </div>
     <div id="thevizcolumn" style="width:80%; height:400px; float: left; background-color:rgb(247, 200, 224);">
       <div style="width:50%; height:400px; float: left">
+      <div id="naplesCholeraAgeSexFemale" style="width:100%;height:300px;" >
+      </div>
+    </div>
+    <div id="thevizcolumn" style="width:80%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+      <div style="width:50%; height:400px; float: left">
       <div id="table3" style="width:100%;height:300px;" ></div>
       </div>
     </div>
@@ -304,7 +309,10 @@ Plotly.plot('table', data, layout);
         console.log(allRows);
 
         var layout = {
-            title: "Cholera Age Sex"
+            title: "Cholera Age/Sex of Males"
+        };
+        var layout = {
+            title: "Cholera Age/Sex of Females"
         };
 
         var x = [], y = [], female = [];
@@ -331,8 +339,22 @@ Plotly.plot('table', data, layout);
                 size: 12
             }
         }];
+        var trace1 = [{
+            x: x,
+            y: female,
+            type: 'bar',
+            mode: 'markers',
+            name: 'Zeroth Trace',
+            //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
+
+            marker: {
+                color: 'rgb(219, 64, 82)',
+                size: 12
+            }
+        }];
 
         Plotly.newPlot('naplesCholeraAgeSex', trace0, layout);
+        Plotly.newPlot('naplesCholeraAgeSexFemale', trace1, layout);
     });
 
     Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/UKcensus1851.csv", function(err, rows){
