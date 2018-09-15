@@ -86,7 +86,16 @@ li a:hover {
       <div id="table3" style="width:100%;height:300px;" ></div>
       </div>
     </div>
-
+    <div id="thevizcolumn" style="width:80%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+      <div style="width:50%; height:400px; float: left">
+      <div id="UKcensus1851" style="width:100%;height:300px;" >
+      </div>
+    </div>
+    <div id="thevizcolumn" style="width:80%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+      <div style="width:100%; height:400px; float: left">
+      <div id="UKcensus1851Female" style="width:100%;height:300px;" >
+      </div>
+    </div>
 <script>
 Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/choleraDeaths.tsv", function(err, rows){
 
@@ -297,7 +306,7 @@ Plotly.plot('table', data, layout);
         var trace0 = [{
             x: x,
             y: y,
-            type: 'line',
+            type: 'bar',
             mode: 'markers',
             name: 'Zeroth Trace',
             //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
@@ -367,6 +376,57 @@ Plotly.plot('table', data, layout);
     Plotly.plot('table3', data, layout);
     });
 
+    Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/UKcensus1851.csv", function(allRows) {
+        console.log(allRows);
+
+        var age = [], male = [], female = [];
+
+        for (var i=0; i<allRows.length; i++) {
+            row = allRows[i];
+            age.push( row['age'] );
+            male.push( row['male'] );
+            female.push(row['female']);
+            //console.log(row['Date']);
+            //console.log(row['Attack']);
+        }
+
+        var layout = {
+            title: "UK Census 1851 Men"
+        };
+
+        var layout2 = {
+            title: "UK Census 1851 Female"
+        };
+
+        var trace0 = [{
+            values: male,
+            labels: age,
+            type: 'pie',
+            mode: 'markers',
+            name: 'Zeroth Trace',
+
+            marker: {
+                color: 'rgb(219, 64, 82)',
+                size: 12
+            }
+        }];
+
+        var trace1 = [{
+            values: female,
+            labels: age,
+            type: 'pie',
+            mode: 'markers',
+            name: 'Zeroth Trace',
+
+            marker: {
+                color: 'rgb(219, 64, 82)',
+                size: 12
+            }
+        }];
+
+        Plotly.newPlot('UKcensus1851', trace0, layout);
+        Plotly.newPlot('UKcensus1851Female', trace1, layout2)
+    });
 /*
     var trace0 = {
         x: [1, 2, 3, 4],
