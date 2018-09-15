@@ -233,7 +233,7 @@ Plotly.plot('table', data, layout);
         cellValue = unpack(rows, headerNames[i]);
         cellValues[i] = cellValue;
       }
-
+console.log(rows);
       //headerValues[headerValues.length] = "Attacks and Deaths";
       // clean date
       for (i = 0; i < cellValues[1].length; i++) {
@@ -265,7 +265,7 @@ Plotly.plot('table', data, layout);
     }]
 
     var layout = {
-      title: "Date vs. Deaths"
+      title: "Fatalities and Age/Sex"
     }
 
     Plotly.plot('table2', data, layout);
