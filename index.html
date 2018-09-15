@@ -106,6 +106,11 @@ li a:hover {
       <div id="UKcensus1851Bar2" style="width:100%;height:300px;" >
       </div>
     </div>
+    <div id="thevizcolumn" style="width:80%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+      <div style="width:100%; height:400px; float: left">
+      <div id="UKcensus1851Pie" style="width:100%;height:300px;" >
+      </div>
+    </div>
 <script>
 Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/choleraDeaths.tsv", function(err, rows){
 
@@ -390,6 +395,8 @@ Plotly.plot('table', data, layout);
         console.log(allRows);
 
         var age = [], male = [], female = [];
+        var totalMales = [], totalFemales = [];
+        var totals = [];
 
         for (var i=0; i<allRows.length; i++) {
             row = allRows[i];
@@ -398,7 +405,23 @@ Plotly.plot('table', data, layout);
             female.push(row['female']);
             //console.log(row['Date']);
             //console.log(row['Attack']);
+
+            if (totalMales.length != 0) {
+              totalMales.push(+row['male'] + +totalMales[i - 1]);
+            }
+            else {
+              totalMales.push(row['male']);
+            }
+
+            if (totalFemales.length != 0) {
+              totalFemales.push(+row['female'] + +totalFemales[i - 1]);
+            } else {
+              totalFemales.push(row['female']);
+            }
+
         }
+        totals.push(totalMales[totalFemales.length - 1]);
+        totals.push(totalFemales[totalFemales.length - 1]);
 
         var layout = {
             title: "UK Census 1851 Men"
@@ -463,10 +486,24 @@ Plotly.plot('table', data, layout);
                 size: 12
             }
         }];
+
+        var trace4 = [{
+            values: totals,
+            labels: ['Men', 'Women'],
+            type: 'pie',
+            mode: 'markers',
+            name: 'Zeroth Trace',
+
+            marker: {
+                color: 'rgb(219, 64, 82)',
+                size: 12
+            }
+        }];
         Plotly.newPlot('UKcensus1851', trace0, layout);
         Plotly.newPlot('UKcensus1851Female', trace1, layout2);
         Plotly.newPlot('UKcensus1851Bar', trace2, layout);
         Plotly.newPlot('UKcensus1851Bar2', trace3, layout2);
+        Plotly.newPlot('UKcensus1851Pie', trace4, layout3);
     });
 /*
     var trace0 = {
