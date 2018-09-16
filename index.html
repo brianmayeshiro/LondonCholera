@@ -1,6 +1,11 @@
 <head>
 <title>Plotly Test</title>
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+  crossorigin=""></script>
 <style>
 ul {
     list-style-type: none;
@@ -25,6 +30,8 @@ li a {
 li a:hover {
     background-color: #111;
 }
+
+#mapid { height: 500px; width: 500px; }
 </style>
 <body>
 
@@ -116,9 +123,59 @@ li a:hover {
       <div id="UKcensus1851Pie" style="width:100%;height:300px;" >
       </div>
     </div>
+    <div id="mapid"></div>
+
 <script>
 Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/choleraDeaths.tsv", function(err, rows){
 
+var mymap = L.map('mapid').setView([51.505, -0.138863], 13);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiYnJpYW5tYXkiLCJhIjoiY2ptNDN2dno1MmI0aDN1bXRhMDdtc2RqOCJ9.xv_-CEDBU04PTUrf2xLjBA'
+}).addTo(mymap);
+
+var states = [{
+    "type": "Feature",
+    "properties": {"party": "Democrat"},
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+            [-0.136668,51.513341],
+            [-0.139586,51.513876],
+            [-0.139671,51.514906],
+            [-0.13163,51.512354],
+            [-0.133594,51.512139],
+            [-0.135919,51.511542],
+            [-0.133962,51.510019],
+            [-0.138199,51.511295]
+        ]]
+    }
+}, {
+    "type": "Feature",
+    "properties": {"party": "Republican"},
+    "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+            [-109.05, 41.00],
+            [-102.06, 40.99],
+            [-102.03, 36.99],
+            [-109.04, 36.99],
+            [-109.05, 41.00]
+        ]]
+    }
+}];
+
+L.geoJSON(states, {
+    style: function(feature) {
+        switch (feature.properties.party) {
+            case 'Republican': return {color: "#ff0000"};
+            case 'Democrat':   return {color: "#0000ff"};
+        }
+    }
+}).addTo(mymap);
   function unpack(rows, key) {
   return rows.map(function(row) { return row[key]; });
   }
@@ -174,7 +231,6 @@ Plotly.plot('table', data, layout);
 });
 
     Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/choleraDeaths.tsv", function(allRows) {
-      //  console.log(allRows);
 
         var layout = {
             title: "Date vs. Number of attacks and deaths"
@@ -267,7 +323,7 @@ Plotly.plot('table', data, layout);
         cellValue = unpack(rows, headerNames[i]);
         cellValues[i] = cellValue;
       }
-      console.log(headerValues);
+      //console.log(headerValues);
       //headerValues[headerValues.length] = "Attacks and Deaths";
       // clean date
       for (i = 0; i < cellValues[1].length; i++) {
@@ -305,116 +361,115 @@ Plotly.plot('table', data, layout);
     Plotly.plot('table2', data, layout);
     });
 
-    Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/naplesCholeraAgeSexData.tsv", function(allRows) {
-        console.log(allRows);
+  Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/naplesCholeraAgeSexData.tsv", function(allRows) {
+      //console.log(allRows);
 
-        var layout = {
-            title: "Cholera Age/Sex of Males"
-        };
-        var layout = {
-            title: "Cholera Age/Sex of Females"
-        };
+      var layout = {
+          title: "Cholera Age/Sex of Males"
+      };
+      var layout = {
+          title: "Cholera Age/Sex of Females"
+      };
 
-        var x = [], y = [], female = [];
+      var x = [], y = [], female = [];
 
-        for (var i=0; i<allRows.length; i++) {
-        		row = allRows[i];
-        		x.push( row['age'] );
-        		y.push( row['male'] );
-            female.push(row['female']);
-            //console.log(row['Date']);
-            //console.log(row['Attack']);
-        }
-
-        var trace0 = [{
-            x: x,
-            y: y,
-            type: 'bar',
-            mode: 'markers',
-            name: 'Zeroth Trace',
-            //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
-
-            marker: {
-                color: 'rgb(219, 64, 82)',
-                size: 12
-            }
-        }];
-        var trace1 = [{
-            x: x,
-            y: female,
-            type: 'bar',
-            mode: 'markers',
-            name: 'Zeroth Trace',
-            //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
-
-            marker: {
-                color: 'rgb(219, 64, 82)',
-                size: 12
-            }
-        }];
-
-        Plotly.newPlot('naplesCholeraAgeSex', trace0, layout);
-        Plotly.newPlot('naplesCholeraAgeSexFemale', trace1, layout);
-    });
-
-    Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/UKcensus1851.csv", function(err, rows){
-
-      function unpack(rows, key) {
-      return rows.map(function(row) { return row[key]; });
+      for (var i=0; i<allRows.length; i++) {
+      		row = allRows[i];
+      		x.push( row['age'] );
+      		y.push( row['male'] );
+          female.push(row['female']);
+          //console.log(row['Date']);
+          //console.log(row['Attack']);
       }
 
-      var headerNames = Plotly.d3.keys(rows[0]);
+      var trace0 = [{
+          x: x,
+          y: y,
+          type: 'bar',
+          mode: 'markers',
+          name: 'Zeroth Trace',
+          //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
 
-      var headerValues = [];
-      var cellValues = [];
-      var totalValues = [];
+          marker: {
+              color: 'rgb(219, 64, 82)',
+              size: 12
+          }
+      }];
+      var trace1 = [{
+          x: x,
+          y: female,
+          type: 'bar',
+          mode: 'markers',
+          name: 'Zeroth Trace',
+          //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
 
-      for (i = 0; i < headerNames.length; i++) {
-        headerValue = [headerNames[i]];
-        headerValues[i] = headerValue;
-        cellValue = unpack(rows, headerNames[i]);
-        cellValues[i] = cellValue;
-      }
+          marker: {
+              color: 'rgb(219, 64, 82)',
+              size: 12
+          }
+      }];
 
-      headerValues[headerValues.length] = "Total";
-      // clean date
-      for (i = 0; i < cellValues[1].length; i++) {
-      var dateValue = cellValues[1][i].split(' ')[0]
-      cellValues[1][i] = dateValue
-      totalValues[i] = +cellValues[1][i] + +cellValues[2][i];
-      }
+      Plotly.newPlot('naplesCholeraAgeSex', trace0, layout);
+      Plotly.newPlot('naplesCholeraAgeSexFemale', trace1, layout);
+  });
 
-  //  console.log(cellValues);
+  Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/UKcensus1851.csv", function(err, rows){
 
-    var data = [{
-      type: 'table',
-      columnwidth: [200,500,600,600,400,400,600,600,600],
-      columnorder: [0,1,2,3,4,5,6,7,8,9],
-      header: {
-        values: headerValues,
-        align: "center",
-        line: {width: 1, color: 'rgb(50, 50, 50)'},
-        fill: {color: ['rgb(235, 100, 230)']},
-        font: {family: "Arial", size: 11, color: "white"}
-      },
-      cells: {
-        values: [cellValues[0], cellValues[1], cellValues[2], totalValues],
-        align: ["center", "center"],
-        line: {color: "black", width: 1},
-        fill: {color: ['rgba(228, 222, 249, 0.65)','rgb(235, 193, 238)', 'rgba(228, 222, 249, 0.65)']},
-        font: {family: "Arial", size: 10, color: ["black"]}
-      }
-    }]
-
-    var layout = {
-      title: "UK Census Data 1851"
+    function unpack(rows, key) {
+    return rows.map(function(row) { return row[key]; });
     }
 
-    Plotly.plot('table3', data, layout);
-    });
+    var headerNames = Plotly.d3.keys(rows[0]);
 
-    Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/UKcensus1851.csv", function(allRows) {
-        console.log(allRows);
+    var headerValues = [];
+    var cellValues = [];
+    var totalValues = [];
+
+    for (i = 0; i < headerNames.length; i++) {
+      headerValue = [headerNames[i]];
+      headerValues[i] = headerValue;
+      cellValue = unpack(rows, headerNames[i]);
+      cellValues[i] = cellValue;
+    }
+
+    headerValues[headerValues.length] = "Total";
+    // clean date
+    for (i = 0; i < cellValues[1].length; i++) {
+    var dateValue = cellValues[1][i].split(' ')[0]
+    cellValues[1][i] = dateValue
+    totalValues[i] = +cellValues[1][i] + +cellValues[2][i];
+    }
+
+//  console.log(cellValues);
+
+  var data = [{
+    type: 'table',
+    columnwidth: [200,500,600,600,400,400,600,600,600],
+    columnorder: [0,1,2,3,4,5,6,7,8,9],
+    header: {
+      values: headerValues,
+      align: "center",
+      line: {width: 1, color: 'rgb(50, 50, 50)'},
+      fill: {color: ['rgb(235, 100, 230)']},
+      font: {family: "Arial", size: 11, color: "white"}
+    },
+    cells: {
+      values: [cellValues[0], cellValues[1], cellValues[2], totalValues],
+      align: ["center", "center"],
+      line: {color: "black", width: 1},
+      fill: {color: ['rgba(228, 222, 249, 0.65)','rgb(235, 193, 238)', 'rgba(228, 222, 249, 0.65)']},
+      font: {family: "Arial", size: 10, color: ["black"]}
+    }
+  }]
+
+  var layout = {
+    title: "UK Census Data 1851"
+  }
+
+  Plotly.plot('table3', data, layout);
+  });
+
+Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/UKcensus1851.csv", function(allRows) {
 
         var age = [], male = [], female = [];
         var totalMales = [], totalFemales = [];
