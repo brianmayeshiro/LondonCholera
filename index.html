@@ -69,12 +69,12 @@ li a:hover {
 -->
     <div id="thevizcolumn" style="width:80%; height:400px; float: left; background-color:rgb(247, 200, 224);">
       <p><center><font face="Arial">Visualization</font></center></p>
-      <div style="width:50%; height:400px; float: left">
+      <div style="width:100%; height:400px; float: left">
       <div id="table" style="width:100%;height:300px;" ></div>
       </div>
     </div>
-    <div id="thevizcolumn" style="width:80%; height:400px; float: left; background-color:rgb(247, 200, 224);">
-      <div style="width:50%; height:400px; float: left">
+    <div id="thevizcolumn" style="width:80%; height:100%; float: left; background-color:rgb(247, 200, 224);">
+      <div style="width:100%; height:100%; float: left">
       <div id="choleraDeaths" style="width:100%;height:300px;" >
       </div>
     </div>
@@ -224,7 +224,7 @@ var data = [{
 }]
 
 var layout = {
-  title: "Date vs. Deaths"
+  title: "Date vs. Number of Attacks/Deaths to Cholera",
 }
 
 Plotly.plot('table', data, layout);
@@ -233,7 +233,19 @@ Plotly.plot('table', data, layout);
     Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/choleraDeaths.tsv", function(allRows) {
 
         var layout = {
-            title: "Date vs. Number of attacks and deaths"
+            title: "Date vs. Number of Attacks/Deaths to Cholera",
+            xaxis: {
+              title: 'Date',
+              titlefont: {
+                size: 18,
+              }
+            },
+            yaxis: {
+              title: 'Number of Attacks/Deaths',
+              titlefont: {
+                size: 18,
+              }
+            }
         };
 
         var x = [], y = [], deaths = [], totalAttacks = [], totalDeaths = [];
@@ -355,7 +367,7 @@ Plotly.plot('table', data, layout);
     }]
 
     var layout = {
-      title: "Fatalities and Age/Sex"
+      title: "Cholera Deaths and Age/Sex"
     }
 
     Plotly.plot('table2', data, layout);
@@ -365,10 +377,36 @@ Plotly.plot('table', data, layout);
       //console.log(allRows);
 
       var layout = {
-          title: "Cholera Age/Sex of Males"
+          title: "Number of Males Fatalities by Age",
+          xaxis: {
+            title: 'Age Range',
+            titlefont: {
+              family: 'Courier New, monospace',
+              size: 18,
+            }
+          },
+          yaxis: {
+            title: 'Number of Male Deaths',
+            titlefont: {
+              family: 'Courier New, monospace',
+              size: 18,
+            }
+          }
       };
       var layout = {
-          title: "Cholera Age/Sex of Females"
+          title: "Number of Females Fatalities by Age",
+          xaxis: {
+            title: 'Age Range',
+            titlefont: {
+              size: 18,
+            }
+          },
+          yaxis: {
+            title: 'Number of Female Deaths',
+            titlefont: {
+              size: 18,
+            }
+          }
       };
 
       var x = [], y = [], female = [];
@@ -501,11 +539,35 @@ Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/ma
         totals.push(totalFemales[totalFemales.length - 1]);
 
         var layout = {
-            title: "UK Census 1851 Men"
+            title: "UK Census 1851 Men",
+            xaxis: {
+              title: 'Age Range',
+              titlefont: {
+                size: 18,
+              }
+            },
+            yaxis: {
+              title: 'Number of Males',
+              titlefont: {
+                size: 18,
+              }
+            }
         };
 
         var layout2 = {
-            title: "UK Census 1851 Female"
+            title: "UK Census 1851 Female",
+            xaxis: {
+              title: 'Age Range',
+              titlefont: {
+                size: 18,
+              }
+            },
+            yaxis: {
+              title: 'Number of Females',
+              titlefont: {
+                size: 18,
+              }
+            }
         };
 
         var layout3 = {
