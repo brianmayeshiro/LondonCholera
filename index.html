@@ -31,9 +31,9 @@ li a:hover {
     background-color: #111;
 }
 
-#mapid { height: 500px; width: 80%; margin: auto}
+#mapid { height: 500px; width: 80%; margin: auto; background-color:rgb(192,192,192);}
 </style>
-<body>
+<body style="background-color:rgb(192,192,192);">
 
 <ul>
   <li><a class="active" href="index.html">Home</a></li>
@@ -41,90 +41,66 @@ li a:hover {
 </ul>
 <script src="plotly-latest.min.js"></script>
 
-
-
-<!--
-
-    <div id="thecontrolcolumn" style="width:20%; height:400px; float: left; background-color:rgb(128, 215, 236);">
-        <P><center><font face="Arial">Controls</font></center></P>
-        <div >
-            <center><input id="mySlider" type="range" min="1" max="100" value="50" ></center>
-        </div>
-        <div>
-            <center><input id="myInput" value=0></center>
-        </div>
-        <div >
-            <center><button id="myButton"> Add Data Point</button></center>
-        </div>
-        <div >
-            <center><button id="myButton2">Add Trace</button></center>
-        </div>
-        <div >
-            <center><button id="myButton3">Disco</button></center>
-        </div>
-        <div>
-            <center>Check This:<input type="checkbox" id="myCheck"></center>
-        </div>
-    </div>
--->
-    <div id="thevizcolumn" style="width:100%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:100%; float: center; background-color:rgb(192,192,192);">
       <h1><center><font face="Arial">Data Visualization</font></center></h1>
       <div style="width:100%; height:400px; float: left">
       <div id="table" style="width:100%;height:300px;" ></div>
       </div>
     </div>
-    <div id="thevizcolumn" style="width:100%; height:100%; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:100%; float: center; background-color:rgb(192,192,192);">
       <div style="width:100%; height:100%; float: left">
       <div id="choleraDeaths" style="width:100%;height:300px;" >
       </div>
     </div>
-    <div id="thevizcolumn" style="width:100%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:400px; float: center; background-color:rgb(192,192,192);">
       <div style="width:100%; height:400px; float: left">
       <div id="table2" style="width:100%;height:300px;" ></div>
       </div>
     </div>
-    <div id="thevizcolumn" style="width:100%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:400px; float: center; background-color:rgb(192,192,192);">
       <div style="width:100%; height:400px; float: left">
       <div id="naplesCholeraAgeSex" style="width:100%;height:300px;" >
       </div>
     </div>
-    <div id="thevizcolumn" style="width:100%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:400px; float: center; background-color:rgb(192,192,192);">
       <div style="width:100%; height:400px; float: left">
       <div id="naplesCholeraAgeSexFemale" style="width:100%;height:300px;" >
       </div>
     </div>
-    <div id="thevizcolumn" style="width:100%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:400px; float: center; background-color:rgb(192,192,192);">
       <div style="width:100%; height:400px; float: left">
       <div id="table3" style="width:100%;height:300px;" ></div>
       </div>
     </div>
-    <div id="thevizcolumn" style="width:100%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:400px; float: center; background-color:rgb(192,192,192);">
       <div style="width:100%; height:400px; float: left">
       <div id="UKcensus1851" style="width:100%;height:300px;" >
       </div>
     </div>
-    <div id="thevizcolumn" style="width:100%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:400px; float: center; background-color:rgb(192,192,192);">
       <div style="width:100%; height:400px; float: left">
       <div id="UKcensus1851Female" style="width:100%;height:300px;" >
       </div>
     </div>
-    <div id="thevizcolumn" style="width:100%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:400px; float: center; background-color:rgb(192,192,192);">
       <div style="width:100%; height:400px; float: left">
       <div id="UKcensus1851Bar" style="width:100%;height:300px;" >
       </div>
     </div>
-    <div id="thevizcolumn" style="width:100%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:400px; float: center; background-color:rgb(192,192,192);">
       <div style="width:100%; height:400px; float: left">
       <div id="UKcensus1851Bar2" style="width:100%;height:300px;" >
       </div>
     </div>
-    <div id="thevizcolumn" style="width:100%; height:400px; float: left; background-color:rgb(247, 200, 224);">
+    <div id="thevizcolumn" style="width:100%; height:400px; float: center; background-color:rgb(192,192,192);">
       <div style="width:100%; height:400px; float: left">
-      <div id="UKcensus1851Pie" style="width:100%;height:300px;" >
+      <div id="UKcensus1851Pie" style="width:100%;height:300px;">
+      <p><center><font face="Arial">Total: 16,738,693</font></center></p>
       </div>
     </div>
     <div id="mapid"></div>
-    <p><center><font face="Arial">Visualization created by Brian Mayeshiro using Plotly.js and Leaflet.<br></br> Data retrieved from Robin Wilson at <a href="http://www.rtwilson.com/academic/">http://www.rtwilson.com/academic/</a></font></center></p>
+    <p><center><font face="Arial">Visualization created by Brian Mayeshiro using Plotly.js and Leaflet.<br></br>
+      Data retrieved from Robin Wilson at <a href="http://www.rtwilson.com/academic/">http://www.rtwilson.com/academic/</a></font></center></p>
 
 <script>
 Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/choleraDeaths.tsv", function(err, rows){
@@ -238,6 +214,7 @@ Plotly.plot('table', data, layout);
             title: "Date vs. Number of Attacks/Deaths to Cholera",
             xaxis: {
               title: 'Date',
+              tickangle: -45,
               titlefont: {
                 size: 18,
               }
@@ -245,9 +222,22 @@ Plotly.plot('table', data, layout);
             yaxis: {
               title: 'Number of Attacks/Deaths',
               titlefont: {
-                size: 18,
+                size: 14,
               }
+            },
+            annotations: [
+            {
+               x: '7-Sep-1854',
+               y: 32,
+               xref: 'x',
+               yref: 'y',
+               text: 'Infection Source Identified',
+               showarrow: true,
+               arrowhead: 7,
+               ax: 0,
+               ay: -40
             }
+           ]
         };
 
         var x = [], y = [], deaths = [], totalAttacks = [], totalDeaths = [];
@@ -279,7 +269,6 @@ Plotly.plot('table', data, layout);
             y: y,
             type: 'line',
             name: 'Attacks',
-            //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
         }];
 
         Plotly.newPlot('choleraDeaths', trace0, layout);
@@ -289,8 +278,6 @@ Plotly.plot('table', data, layout);
             y: deaths,
             type: 'line',
             name: 'Deaths',
-            //text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
-
             marker: {
                 color: 'rgb(219, 64, 82)',
                 size: 12
@@ -319,7 +306,7 @@ Plotly.plot('table', data, layout);
 
         Plotly.plot(choleraDeaths, trace3);
     });
-    Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/naplesCholeraAgeSexData.tsv", function(err, rows){
+Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/naplesCholeraAgeSexData.tsv", function(err, rows){
 
       function unpack(rows, key) {
       return rows.map(function(row) { return row[key]; });
@@ -337,16 +324,11 @@ Plotly.plot('table', data, layout);
         cellValue = unpack(rows, headerNames[i]);
         cellValues[i] = cellValue;
       }
-      //console.log(headerValues);
-      //headerValues[headerValues.length] = "Attacks and Deaths";
       // clean date
       for (i = 0; i < cellValues[1].length; i++) {
       var dateValue = cellValues[1][i].split(' ')[0]
       cellValues[1][i] = dateValue
-      //totalDeaths[i] = +cellValues[1][i] + +cellValues[2][i];
       }
-
-    //console.log(totalDeaths);
 
     var data = [{
       type: 'table',
@@ -375,7 +357,7 @@ Plotly.plot('table', data, layout);
     Plotly.plot('table2', data, layout);
     });
 
-  Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/naplesCholeraAgeSexData.tsv", function(allRows) {
+Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/naplesCholeraAgeSexData.tsv", function(allRows) {
       //console.log(allRows);
 
       var layout = {
@@ -391,7 +373,20 @@ Plotly.plot('table', data, layout);
             titlefont: {
               size: 18,
             }
+          },
+          annotations: [
+          {
+             x: 'over 80',
+             y: 39.6,
+             xref: 'x',
+             yref: 'y',
+             text: 'Most fatalities overall',
+             showarrow: true,
+             arrowhead: 7,
+             ax: 0,
+             ay: -20
           }
+         ]
       };
       var layout1 = {
           title: "Number of Female Fatalities by Age",
@@ -451,7 +446,7 @@ Plotly.plot('table', data, layout);
       Plotly.newPlot('naplesCholeraAgeSexFemale', trace1, layout1);
   });
 
-  Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/UKcensus1851.csv", function(err, rows){
+Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/UKcensus1851.csv", function(err, rows){
 
     function unpack(rows, key) {
     return rows.map(function(row) { return row[key]; });
@@ -644,137 +639,7 @@ Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/ma
         Plotly.newPlot('UKcensus1851Bar2', trace3, layout2);
         Plotly.newPlot('UKcensus1851Pie', trace4, layout3);
     });
-/*
-    var trace0 = {
-        x: [1, 2, 3, 4],
-        y: [10, 15, 13, 17],
-        type: 'scatter',
-        mode: 'markers',
-        name: 'Zeroth Trace',
-        text: ['SAMOA','TONGA','TOKELAU','AOTEROA'],
 
-        marker: {
-            color: 'rgb(219, 64, 82)',
-            size: 12
-        }
-    };
-    var trace1 = {
-        x: [1, 2, 3, 4],
-        y: [16, 5, 11, 9],
-        type: 'scatter',
-        name: 'First Trace'
-    };
-    data1 = [trace0, trace1];
-
-    var trace2 = {
-        x: ["Star Wars", "Star Trek", "Babylon 5", "Battlestar"],
-        y: [16, 5, 11, 9],
-        type: 'bar'
-    }
-    data2 = [trace2];
-
-   plot1Div = document.getElementById('plot1');
-   plot2Div = document.getElementById('plot2');
-   var layout = {
-       title: "Chart 1"
-   };
-   var layout2 = {
-       title: "Chart 2"
-   }
-	//var myChart1=Plotly.plot( plot1Div, data1, layout );
-    //var myChart2=Plotly.plot( plot2Div, data2, layout2 );
-
-
-    var button = document.getElementById("myButton");
-    var button2 = document.getElementById("myButton2");
-    var button3 = document.getElementById("myButton3");
-    var slider = document.getElementById("mySlider");
-    var input = document.getElementById("myInput");
-    var check = document.getElementById("myCheck");
-    check.checked=true;
-
-    input.onfocus = function(){
-        input.value="0";
-    }
-
-    check.onclick = function(){
-        if (check.checked == true){
-            trace0.visible = true;
-        } else {
-            trace0.visible = false;
-        }
-        Plotly.react(plot1Div,
-        data1, 0);   // Zero here refers to the zeroth plot trace
-    }
-
-
-    updateChart = function(value) {
-        // Change the value in one of the data arrays
-        var arry = trace0.y;
-        arry[0]=value
-
-        // Update the plot to reflect the new data change.
-        Plotly.newPlot(plot1Div,
-        data1, 0);   // Zero here refers to the zeroth plot trace
-    }
-    input.onkeyup = function() {
-        slider.value = input.value;
-        updateChart(input.value);
-    }
-    slider.oninput = function() {
-        input.value = slider.value;
-        updateChart(slider.value);
-    }
-
-    // Add one additional data value to trace 0
-    button.onclick = function(){
-
-        // Add a data value to the data array
-
-        var arrx = trace0.x;
-        var arry = trace0.y;
-
-        arrx.push(arrx.length);
-        arry.push(Math.random()*10);
-
-        // Update the plot to reflect the new data change.
-        Plotly.newPlot(plot1Div, data1, 0);   // Zero here refers to the zeroth plot trace
-    }
-
-    // When you click on Button 2 it adds a new trace to the plot.
-    button2.onclick = function(){
-
-        var arrx = [1,2,3,4];   // X axis values
-        var arry = [0,0,0,0];   // Y axis values
-
-        var trace = {
-            x: arrx,
-            y: arry
-        }
-        var data = [trace];
-
-        // Put some random numbers into the trace.
-        for (i in arrx){
-            arry[i] = Math.random()*15;
-        }
-
-        // Add the data to the plot.
-        Plotly.plot( plot1Div, data);
-    }
-
-    // Change the color of trace 0 to some random color
-    button3.onclick = function(){
-        var updateColor = {
-            marker: {
-                color: 'rgb(250, 0, 0)'
-            }
-        }
-
-        var aRandomColor = "rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")";
-        updateColor.marker.color = aRandomColor;
-        Plotly.restyle(plot1Div, updateColor,0);
-    }
-    */
 </script>
 
 </body>
