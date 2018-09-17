@@ -1,5 +1,5 @@
 <head>
-<title>Plotly Test</title>
+<title>1854 Cholera Outbreak</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
    crossorigin=""/>
@@ -377,24 +377,22 @@ Plotly.plot('table', data, layout);
       //console.log(allRows);
 
       var layout = {
-          title: "Number of Males Fatalities by Age",
+          title: "Number of Male Fatalities by Age",
           xaxis: {
             title: 'Age Range',
             titlefont: {
-              family: 'Courier New, monospace',
               size: 18,
             }
           },
           yaxis: {
             title: 'Number of Male Deaths',
             titlefont: {
-              family: 'Courier New, monospace',
               size: 18,
             }
           }
       };
-      var layout = {
-          title: "Number of Females Fatalities by Age",
+      var layout1 = {
+          title: "Number of Female Fatalities by Age",
           xaxis: {
             title: 'Age Range',
             titlefont: {
@@ -448,7 +446,7 @@ Plotly.plot('table', data, layout);
       }];
 
       Plotly.newPlot('naplesCholeraAgeSex', trace0, layout);
-      Plotly.newPlot('naplesCholeraAgeSexFemale', trace1, layout);
+      Plotly.newPlot('naplesCholeraAgeSexFemale', trace1, layout1);
   });
 
   Plotly.d3.csv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/UKcensus1851.csv", function(err, rows){
