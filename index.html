@@ -159,7 +159,7 @@ L.geoJSON(states, {
 }).addTo(mymap);
 
 // load GeoJSON from an external file
-$.getJSON("https://github.com/brianmayeshiro/LondonCholera/blob/master/choleraDeathLocations.geojson",function(data){
+$.getJSON("choleraDeathLocations.geojson",function(data){
   // add GeoJSON layer to the map once the file is loaded
   L.geoJson(data).addTo(mymap);
 });
