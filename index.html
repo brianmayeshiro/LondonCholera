@@ -108,7 +108,7 @@ li a:hover {
 <script>
 Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/choleraDeaths.tsv", function(err, rows){
 
-var mymap = L.map('mapid').setView([51.505, -0.138863], 13);
+var mymap = L.map('mapid').setView([51.510, -0.134863], 14);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -272,6 +272,10 @@ Plotly.plot('table', data, layout);
             y: y,
             type: 'line',
             name: 'Attacks',
+            marker: {
+                color: 'rgb(230, 159, 0)',
+                size: 12
+            }
         }];
 
         Plotly.newPlot('choleraDeaths', trace0, layout);
@@ -282,7 +286,7 @@ Plotly.plot('table', data, layout);
             type: 'line',
             name: 'Deaths',
             marker: {
-                color: 'rgb(219, 64, 82)',
+                color: 'rgb(86, 180, 233)',
                 size: 12
             }
         }];
@@ -293,8 +297,11 @@ Plotly.plot('table', data, layout);
           x: x,
           y: totalAttacks,
           type: 'line',
-          name: 'Attacks up to this day'
-
+          name: 'Attacks up to this day',
+          marker: {
+              color: 'rgb(213, 94, 0)',
+              size: 12
+          }
         }];
 
         Plotly.plot(choleraDeaths, trace2);
@@ -303,8 +310,11 @@ Plotly.plot('table', data, layout);
           x: x,
           y: totalDeaths,
           type: 'line',
-          name: 'Deaths up to this day'
-
+          name: 'Deaths up to this day',
+          marker: {
+              color: 'rgb(204, 121, 167)',
+              size: 12
+          }
         }];
 
         Plotly.plot(choleraDeaths, trace3);
