@@ -120,7 +120,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 var states = [{
     "type": "Feature",
-    "properties": {"party": "Democrat"},
+    "properties": {"party": "Republican"},
     "geometry": {
         "type": "Polygon",
         "coordinates": [[
@@ -136,7 +136,7 @@ var states = [{
     }
 }, {
     "type": "Feature",
-    "properties": {"party": "Republican"},
+    "properties": {"party": "Democrat"},
     "geometry": {
         "type": "Polygon",
         "coordinates": [[
@@ -158,9 +158,7 @@ L.geoJSON(states, {
     }
 }).addTo(mymap);
 
-// load GeoJSON from an external file
 $.getJSON("choleraDeathLocations.geojson",function(data){
-  // add GeoJSON layer to the map once the file is loaded
   L.geoJson(data).addTo(mymap);
 });
 
