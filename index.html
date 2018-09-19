@@ -102,17 +102,17 @@ li a:hover {
     </div>
     <h1><center><font face="Arial">Map Overview</font></center></h1>
     <div id="mapid"></div>
-    <p><center><font face="Arial">Visualization created by Brian Mayeshiro using Plotly.js and Leaflet.<br></br>
+    <p><center><font face="Arial">Visualization created by <a href="https://brianmayeshiro.github.io/">Brian Mayeshiro</a> using Plotly.js and Leaflet.<br></br>
       Data retrieved from Robin Wilson at <a href="http://www.rtwilson.com/academic/">http://www.rtwilson.com/academic/</a></font></center></p>
 
 <script>
 Plotly.d3.tsv("https://raw.githubusercontent.com/brianmayeshiro/LondonCholera/master/choleraDeaths.tsv", function(err, rows){
 
-var mymap = L.map('mapid').setView([51.510, -0.134863], 14);
+var mymap = L.map('mapid').setView([51.5125, -0.134863], 16);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
+    maxZoom: 20,
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoiYnJpYW5tYXkiLCJhIjoiY2ptNDN2dno1MmI0aDN1bXRhMDdtc2RqOCJ9.xv_-CEDBU04PTUrf2xLjBA'
 }).addTo(mymap);
